@@ -1,0 +1,10 @@
+{
+  "description": "AI-powered meal planner generates personalized grocery lists and recipes to simplify meal prep and save time for busy individuals and families.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

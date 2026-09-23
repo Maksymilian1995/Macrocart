@@ -1,0 +1,5559 @@
+{
+  "taxonomyId": "macrocart-normalized-ingredients",
+  "taxonomyVersion": "1.0.0",
+  "createdDate": "2026-09-23",
+  "ingredientCount": 167,
+  "languages": [
+    "en",
+    "da"
+  ],
+  "identifierPolicy": "Stable lower_snake_case IDs identify ingredient form and relevant composition. Synonyms are aliases; culinary substitutions are not aliases. Retire IDs with explicit mappings rather than silently changing meaning.",
+  "quantityConventions": {
+    "recipeIngredients": "Whole-recipe edible quantities for the stated servings, not per-serving amounts.",
+    "substitutionAlternatives": "Whole-recipe replacement quantities for one original ingredient. Apply one alternative at a time, never all alternatives together.",
+    "possibleAddOns": "Whole-recipe additional quantities. Excluded from base nutrition.",
+    "possibleRemovals": "Whole-recipe quantities of existing ingredient lines to remove. Recalculate the result.",
+    "scalingChanges": "Per-serving deltas to the original base. The three goals are independent options, not a sequence.",
+    "units": [
+      "g",
+      "ml"
+    ],
+    "dryGrains": "Rice, pasta, barley, bulgur, couscous, buckwheat, oats and dried red lentils are dry unless the ID and quantityState explicitly say otherwise.",
+    "cannedFood": "Canned beans, lentils, corn, fruit and tuna use drained edible weight. Canned tomatoes and passata include their sauce or juice.",
+    "eggs": "Edible shell-free grams; an approximate egg count in notes is a kitchen aid, not a reliable purchase conversion.",
+    "frozenVegetables": "Weigh frozen before cooking unless a recipe note says otherwise; water lost during cooking is not subtracted from the generic nutrition sum.",
+    "preparedStock": "Stock quantities are prepared millilitres, not concentrate, powder or cube weight.",
+    "cookingWater": "Quantified absorption or recipe water is listed. Unmeasured water used only to rinse, boil and drain is a utility, not a grocery ingredient.",
+    "density": "No automatic g/ml conversion. Match basis units or obtain a verified SKU-specific density.",
+    "purchaseYield": "Edible quantities are not package quantities. Use verified drained weights, peel/bone yields, count weights and pack sizes when buying."
+  },
+  "nutritionModel": {
+    "version": "1.0.0",
+    "method": "ingredient_sum_v1",
+    "provenance": "curated_generic_estimates_not_imported_composition_records",
+    "referenceBasis": "Per 100 g or per 100 ml, exactly as specified for each canonical ingredient.",
+    "energyFormula": "calories = 4*proteinGrams + 4*carbsGrams + 9*fatGrams + 2*fiberGrams",
+    "carbohydrateConvention": "available_excluding_fiber",
+    "recipeCalculation": "Sum ingredient quantity / reference basisQuantity * reference nutrients; divide by servings; exclude optional ingredients.",
+    "rounding": "Reference energy to 0.1 kcal; sum with decimal arithmetic; round recipe energy to whole kcal and other recipe nutrients to 0.1 g, using ROUND_HALF_UP. Round only after summing.",
+    "limitations": [
+      "Rounded author-curated generic estimates, not laboratory or branded-product measurements.",
+      "All measured oil, marinade, coatings and sauces are counted as eaten unless an ingredient is optional; actual retention can differ.",
+      "Cooking losses, trimming differences, mineral losses and measured cooked yields are not modeled.",
+      "Energy from organic acids, alcohol, polyols and other special Annex XIV factors is not modeled separately.",
+      "Do not treat this carbohydrate field as US total carbohydrate; US totals generally include fibre.",
+      "These estimates have no measured confidence interval and do not justify an invented precision claim."
+    ],
+    "productionRequirement": "Replace or validate generic references against licensed authoritative composition records and actual retailer SKU labels before calibrated dietary planning; retain source IDs, basis, version and provenance."
+  },
+  "offerMatchingRules": [
+    "Match a retailer SKU to one canonical ID using form, cut, bone/skin state, fat class, flavour, allergens, drainage state and ingredient constraints, not a fuzzy name alone.",
+    "Record fat or protein differences as an explicit product-variant nutrition override; do not silently equate 5% and 15% mince or Greek-style yogurt and high-protein strained yogurt.",
+    "Use the SKU label for allergen and vegetarian suitability checks, including compound ingredients and cross-contact.",
+    "Convert prepared stock to the purchased concentrate only using that product dilution instructions.",
+    "Compute edible unit cost from usable pack content. Aggregate whole-week ingredient demand before calculating whole-pack purchases and leftovers.",
+    "Apply offer dates, store, membership conditions, pack limits, geography, price currency and source timestamp. None of these data is included in this release.",
+    "After a substitution, re-evaluate ingredient demand, nutrients, energy, allergens, dietary suitability, tags, method, time, taste and costs. Method-changing alternatives require review."
+  ],
+  "groups": {
+    "protein": [
+      {
+        "normalizedIngredient": "chicken_breast",
+        "name": {
+          "en": "Chicken breast",
+          "da": "Kyllingebryst"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "chicken breast"
+          ],
+          "da": [
+            "kyllingebryst"
+          ]
+        },
+        "matchingAttributes": {
+          "cut": "breast",
+          "skin": "skinless",
+          "bone": "boneless"
+        },
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 110,
+          "proteinGrams": 23,
+          "carbsGrams": 0,
+          "fatGrams": 2,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "chicken_thigh_skinless",
+        "name": {
+          "en": "Boneless skinless chicken thigh",
+          "da": "Udbenet kyllingeoverlår uden skind"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "boneless skinless chicken thigh",
+            "chicken thigh skinless"
+          ],
+          "da": [
+            "udbenet kyllingeoverlår uden skind"
+          ]
+        },
+        "matchingAttributes": {
+          "cut": "thigh",
+          "skin": "skinless",
+          "bone": "boneless"
+        },
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 139,
+          "proteinGrams": 19,
+          "carbsGrams": 0,
+          "fatGrams": 7,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "turkey_breast",
+        "name": {
+          "en": "Turkey breast",
+          "da": "Kalkunbryst"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "turkey breast"
+          ],
+          "da": [
+            "kalkunbryst"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 109.5,
+          "proteinGrams": 24,
+          "carbsGrams": 0,
+          "fatGrams": 1.5,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "turkey_minced_7pct",
+        "name": {
+          "en": "Turkey mince, 7% fat",
+          "da": "Hakket kalkun, 7% fedt"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "turkey mince, 7% fat",
+            "turkey minced 7pct"
+          ],
+          "da": [
+            "hakket kalkun, 7% fedt"
+          ]
+        },
+        "matchingAttributes": {
+          "fatPercent": 7
+        },
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 143,
+          "proteinGrams": 20,
+          "carbsGrams": 0,
+          "fatGrams": 7,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "beef_minced_5pct",
+        "name": {
+          "en": "Beef mince, 5% fat",
+          "da": "Hakket oksekød, 5% fedt"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "beef mince, 5% fat",
+            "beef minced 5pct"
+          ],
+          "da": [
+            "hakket oksekød, 5% fedt"
+          ]
+        },
+        "matchingAttributes": {
+          "fatPercent": 5
+        },
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 129,
+          "proteinGrams": 21,
+          "carbsGrams": 0,
+          "fatGrams": 5,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "beef_strips_lean",
+        "name": {
+          "en": "Lean beef steak strips",
+          "da": "Magre oksekødsstrimler"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "lean beef steak strips",
+            "beef strips lean"
+          ],
+          "da": [
+            "magre oksekødsstrimler"
+          ]
+        },
+        "matchingAttributes": {
+          "cut": "quick_cooking_steak"
+        },
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 133,
+          "proteinGrams": 22,
+          "carbsGrams": 0,
+          "fatGrams": 5,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "beef_stewing_lean",
+        "name": {
+          "en": "Lean stewing beef",
+          "da": "Magert oksekød til gryderet"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "lean stewing beef",
+            "beef stewing lean"
+          ],
+          "da": [
+            "magert oksekød til gryderet"
+          ]
+        },
+        "matchingAttributes": {
+          "cut": "stewing"
+        },
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 138,
+          "proteinGrams": 21,
+          "carbsGrams": 0,
+          "fatGrams": 6,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "pork_tenderloin",
+        "name": {
+          "en": "Pork tenderloin",
+          "da": "Svinemørbrad"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "pork tenderloin"
+          ],
+          "da": [
+            "svinemørbrad"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 119.5,
+          "proteinGrams": 22,
+          "carbsGrams": 0,
+          "fatGrams": 3.5,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "pork_minced_5pct",
+        "name": {
+          "en": "Pork mince, 5% fat",
+          "da": "Hakket svinekød, 5% fedt"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "pork mince, 5% fat",
+            "pork minced 5pct"
+          ],
+          "da": [
+            "hakket svinekød, 5% fedt"
+          ]
+        },
+        "matchingAttributes": {
+          "fatPercent": 5
+        },
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 129,
+          "proteinGrams": 21,
+          "carbsGrams": 0,
+          "fatGrams": 5,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "pork_loin",
+        "name": {
+          "en": "Trimmed pork loin",
+          "da": "Svinekam uden ben og fedtkant"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "trimmed pork loin",
+            "pork loin"
+          ],
+          "da": [
+            "svinekam uden ben og fedtkant"
+          ]
+        },
+        "matchingAttributes": {
+          "bone": "boneless",
+          "fat": "trimmed"
+        },
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 133,
+          "proteinGrams": 22,
+          "carbsGrams": 0,
+          "fatGrams": 5,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "cooked_ham",
+        "name": {
+          "en": "Cooked ham",
+          "da": "Kogt skinke"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "cooked ham"
+          ],
+          "da": [
+            "kogt skinke"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 113.0,
+          "proteinGrams": 20,
+          "carbsGrams": 1.5,
+          "fatGrams": 3,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "salmon_fillet",
+        "name": {
+          "en": "Salmon fillet",
+          "da": "Laksefilet"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "salmon fillet"
+          ],
+          "da": [
+            "laksefilet"
+          ]
+        },
+        "matchingAttributes": {
+          "bone": "boneless",
+          "skin": "excluded"
+        },
+        "allergens": [
+          "fish"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 197,
+          "proteinGrams": 20,
+          "carbsGrams": 0,
+          "fatGrams": 13,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "cod_fillet",
+        "name": {
+          "en": "Cod fillet",
+          "da": "Torskefilet"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "cod fillet"
+          ],
+          "da": [
+            "torskefilet"
+          ]
+        },
+        "matchingAttributes": {
+          "bone": "boneless"
+        },
+        "allergens": [
+          "fish"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 79.2,
+          "proteinGrams": 18,
+          "carbsGrams": 0,
+          "fatGrams": 0.8,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "tuna_canned_water",
+        "name": {
+          "en": "Tuna in water, drained",
+          "da": "Tun i vand, drænet"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "canned_drained",
+        "aliases": {
+          "en": [
+            "tuna in water, drained",
+            "tuna canned water"
+          ],
+          "da": [
+            "tun i vand, drænet"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "fish"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 109,
+          "proteinGrams": 25,
+          "carbsGrams": 0,
+          "fatGrams": 1,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "prawns_raw_peeled",
+        "name": {
+          "en": "Raw peeled prawns",
+          "da": "Rå pillede rejer"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "raw peeled prawns",
+            "prawns raw peeled"
+          ],
+          "da": [
+            "rå pillede rejer"
+          ]
+        },
+        "matchingAttributes": {
+          "shell": "peeled",
+          "cookingState": "raw"
+        },
+        "allergens": [
+          "crustaceans"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 91.0,
+          "proteinGrams": 20,
+          "carbsGrams": 0.5,
+          "fatGrams": 1,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "smoked_mackerel",
+        "name": {
+          "en": "Smoked mackerel, boneless",
+          "da": "Røget makrel uden ben"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "smoked mackerel, boneless",
+            "smoked mackerel"
+          ],
+          "da": [
+            "røget makrel uden ben"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "fish"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 305,
+          "proteinGrams": 20,
+          "carbsGrams": 0,
+          "fatGrams": 25,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "egg",
+        "name": {
+          "en": "Whole egg, shell removed",
+          "da": "Hele æg uden skal"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "whole egg, shell removed",
+            "egg"
+          ],
+          "da": [
+            "hele æg uden skal"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "eggs"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 138.7,
+          "proteinGrams": 12.6,
+          "carbsGrams": 0.7,
+          "fatGrams": 9.5,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "egg_white",
+        "name": {
+          "en": "Pasteurised egg white",
+          "da": "Pasteuriseret æggehvide"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "pasteurised egg white",
+            "egg white"
+          ],
+          "da": [
+            "pasteuriseret æggehvide"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "eggs"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 46.6,
+          "proteinGrams": 10.5,
+          "carbsGrams": 0.7,
+          "fatGrams": 0.2,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "tofu_firm",
+        "name": {
+          "en": "Firm tofu",
+          "da": "Fast tofu"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "drained",
+        "aliases": {
+          "en": [
+            "firm tofu",
+            "tofu firm"
+          ],
+          "da": [
+            "fast tofu"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "soy"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 136.0,
+          "proteinGrams": 14,
+          "carbsGrams": 1.5,
+          "fatGrams": 8,
+          "fiberGrams": 1,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "tofu_silken",
+        "name": {
+          "en": "Silken tofu",
+          "da": "Silketofu"
+        },
+        "group": "protein",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "silken tofu",
+            "tofu silken"
+          ],
+          "da": [
+            "silketofu"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "soy"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 55.6,
+          "proteinGrams": 5,
+          "carbsGrams": 2,
+          "fatGrams": 3,
+          "fiberGrams": 0.3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      }
+    ],
+    "dairy": [
+      {
+        "normalizedIngredient": "skyr_plain",
+        "name": {
+          "en": "Plain skyr, 0.2% fat",
+          "da": "Skyr naturel, 0,2% fedt"
+        },
+        "group": "dairy",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "plain skyr, 0.2% fat",
+            "skyr plain"
+          ],
+          "da": [
+            "skyr naturel, 0,2% fedt"
+          ]
+        },
+        "matchingAttributes": {
+          "fatPercent": 0.2,
+          "sweetened": false
+        },
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 61.8,
+          "proteinGrams": 11,
+          "carbsGrams": 4,
+          "fatGrams": 0.2,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "greek_yogurt_2pct",
+        "name": {
+          "en": "Strained Greek yogurt, 2% fat",
+          "da": "Græsk yoghurt, 2% fedt"
+        },
+        "group": "dairy",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "strained greek yogurt, 2% fat",
+            "greek yogurt 2pct"
+          ],
+          "da": [
+            "græsk yoghurt, 2% fedt"
+          ]
+        },
+        "matchingAttributes": {
+          "fatPercent": 2,
+          "proteinMinPer100g": 8,
+          "sweetened": false
+        },
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 71.2,
+          "proteinGrams": 9.5,
+          "carbsGrams": 3.8,
+          "fatGrams": 2,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "cottage_cheese_2pct",
+        "name": {
+          "en": "Cottage cheese, 2% fat",
+          "da": "Hytteost, 2% fedt"
+        },
+        "group": "dairy",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "cottage cheese, 2% fat",
+            "cottage cheese 2pct"
+          ],
+          "da": [
+            "hytteost, 2% fedt"
+          ]
+        },
+        "matchingAttributes": {
+          "fatPercent": 2
+        },
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 78,
+          "proteinGrams": 12,
+          "carbsGrams": 3,
+          "fatGrams": 2,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "quark_lowfat",
+        "name": {
+          "en": "Low-fat quark",
+          "da": "Mager kvark"
+        },
+        "group": "dairy",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "low-fat quark",
+            "quark lowfat"
+          ],
+          "da": [
+            "mager kvark"
+          ]
+        },
+        "matchingAttributes": {
+          "fatPercentMax": 0.5
+        },
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 66.7,
+          "proteinGrams": 12,
+          "carbsGrams": 4,
+          "fatGrams": 0.3,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "milk_1_5pct",
+        "name": {
+          "en": "Milk, 1.5% fat",
+          "da": "Letmælk, 1,5% fedt"
+        },
+        "group": "dairy",
+        "defaultUnit": "ml",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "milk, 1.5% fat",
+            "milk 1 5pct"
+          ],
+          "da": [
+            "letmælk, 1,5% fedt"
+          ]
+        },
+        "matchingAttributes": {
+          "fatPercent": 1.5
+        },
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "ml",
+          "calories": 46.7,
+          "proteinGrams": 3.5,
+          "carbsGrams": 4.8,
+          "fatGrams": 1.5,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "kefir_plain",
+        "name": {
+          "en": "Plain kefir, 1.5% fat",
+          "da": "Kefir naturel, 1,5% fedt"
+        },
+        "group": "dairy",
+        "defaultUnit": "ml",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "plain kefir, 1.5% fat",
+            "kefir plain"
+          ],
+          "da": [
+            "kefir naturel, 1,5% fedt"
+          ]
+        },
+        "matchingAttributes": {
+          "fatPercent": 1.5,
+          "sweetened": false
+        },
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "ml",
+          "calories": 45.5,
+          "proteinGrams": 3.5,
+          "carbsGrams": 4.5,
+          "fatGrams": 1.5,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "cream_cheese_light",
+        "name": {
+          "en": "Light cream cheese",
+          "da": "Let flødeost"
+        },
+        "group": "dairy",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "light cream cheese",
+            "cream cheese light"
+          ],
+          "da": [
+            "let flødeost"
+          ]
+        },
+        "matchingAttributes": {
+          "fatPercentApprox": 12
+        },
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 156,
+          "proteinGrams": 8,
+          "carbsGrams": 4,
+          "fatGrams": 12,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "creme_fraiche_9pct",
+        "name": {
+          "en": "Creme fraiche, 9% fat",
+          "da": "Fraiche, 9% fedt"
+        },
+        "group": "dairy",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "creme fraiche, 9% fat",
+            "creme fraiche 9pct"
+          ],
+          "da": [
+            "fraiche, 9% fedt"
+          ]
+        },
+        "matchingAttributes": {
+          "fatPercentApprox": 9
+        },
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 113,
+          "proteinGrams": 4,
+          "carbsGrams": 4,
+          "fatGrams": 9,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "cooking_cream_15pct",
+        "name": {
+          "en": "Cooking cream, 15% fat",
+          "da": "Madlavningsfløde, 15% fedt"
+        },
+        "group": "dairy",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "cooking cream, 15% fat",
+            "cooking cream 15pct"
+          ],
+          "da": [
+            "madlavningsfløde, 15% fedt"
+          ]
+        },
+        "matchingAttributes": {
+          "fatPercent": 15
+        },
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 163,
+          "proteinGrams": 3,
+          "carbsGrams": 4,
+          "fatGrams": 15,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "mozzarella_light",
+        "name": {
+          "en": "Light mozzarella, drained",
+          "da": "Let mozzarella, drænet"
+        },
+        "group": "dairy",
+        "defaultUnit": "g",
+        "quantityState": "drained",
+        "aliases": {
+          "en": [
+            "light mozzarella, drained",
+            "mozzarella light"
+          ],
+          "da": [
+            "let mozzarella, drænet"
+          ]
+        },
+        "matchingAttributes": {
+          "fatPercentApprox": 9,
+          "rennet": "check_vegetarian_label"
+        },
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 181,
+          "proteinGrams": 23,
+          "carbsGrams": 2,
+          "fatGrams": 9,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "cheddar",
+        "name": {
+          "en": "Cheddar cheese",
+          "da": "Cheddarost"
+        },
+        "group": "dairy",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "cheddar cheese",
+            "cheddar"
+          ],
+          "da": [
+            "cheddarost"
+          ]
+        },
+        "matchingAttributes": {
+          "rennet": "check_vegetarian_label"
+        },
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 401,
+          "proteinGrams": 25,
+          "carbsGrams": 1,
+          "fatGrams": 33,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "feta",
+        "name": {
+          "en": "Feta-style white cheese",
+          "da": "Feta eller salatost"
+        },
+        "group": "dairy",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "feta-style white cheese",
+            "feta"
+          ],
+          "da": [
+            "feta eller salatost"
+          ]
+        },
+        "matchingAttributes": {
+          "rennet": "check_vegetarian_label"
+        },
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 257,
+          "proteinGrams": 15,
+          "carbsGrams": 2,
+          "fatGrams": 21,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "parmesan",
+        "name": {
+          "en": "Parmesan",
+          "da": "Parmesan"
+        },
+        "group": "dairy",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "parmesan"
+          ],
+          "da": [
+            "parmesan"
+          ]
+        },
+        "matchingAttributes": {
+          "rennet": "animal"
+        },
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 392,
+          "proteinGrams": 35,
+          "carbsGrams": 0,
+          "fatGrams": 28,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "hard_cheese_vegetarian",
+        "name": {
+          "en": "Vegetarian hard Italian-style cheese",
+          "da": "Fast italiensk-inspireret ost med vegetabilsk løbe"
+        },
+        "group": "dairy",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "vegetarian hard italian-style cheese",
+            "hard cheese vegetarian"
+          ],
+          "da": [
+            "fast italiensk-inspireret ost med vegetabilsk løbe"
+          ]
+        },
+        "matchingAttributes": {
+          "rennet": "vegetarian_required"
+        },
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 384,
+          "proteinGrams": 32,
+          "carbsGrams": 1,
+          "fatGrams": 28,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "ricotta",
+        "name": {
+          "en": "Ricotta",
+          "da": "Ricotta"
+        },
+        "group": "dairy",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "ricotta"
+          ],
+          "da": [
+            "ricotta"
+          ]
+        },
+        "matchingAttributes": {
+          "rennet": "check_vegetarian_label"
+        },
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 142,
+          "proteinGrams": 10,
+          "carbsGrams": 3,
+          "fatGrams": 10,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "halloumi",
+        "name": {
+          "en": "Halloumi-style grilling cheese",
+          "da": "Halloumi eller grillost"
+        },
+        "group": "dairy",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "halloumi-style grilling cheese",
+            "halloumi"
+          ],
+          "da": [
+            "halloumi eller grillost"
+          ]
+        },
+        "matchingAttributes": {
+          "rennet": "check_vegetarian_label"
+        },
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 321,
+          "proteinGrams": 22,
+          "carbsGrams": 2,
+          "fatGrams": 25,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      }
+    ],
+    "carbohydrates": [
+      {
+        "normalizedIngredient": "rolled_oats",
+        "name": {
+          "en": "Rolled oats",
+          "da": "Havregryn"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "rolled oats"
+          ],
+          "da": [
+            "havregryn"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 371,
+          "proteinGrams": 13,
+          "carbsGrams": 59,
+          "fatGrams": 7,
+          "fiberGrams": 10,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "rice_white_dry",
+        "name": {
+          "en": "White rice, dry",
+          "da": "Hvide ris, tørre"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "white rice, dry",
+            "rice white dry"
+          ],
+          "da": [
+            "hvide ris, tørre"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 348.3,
+          "proteinGrams": 7,
+          "carbsGrams": 78,
+          "fatGrams": 0.7,
+          "fiberGrams": 1,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "rice_brown_dry",
+        "name": {
+          "en": "Brown rice, dry",
+          "da": "Brune ris, tørre"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "brown rice, dry",
+            "rice brown dry"
+          ],
+          "da": [
+            "brune ris, tørre"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 350.5,
+          "proteinGrams": 8,
+          "carbsGrams": 72,
+          "fatGrams": 2.5,
+          "fiberGrams": 4,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "pasta_dry",
+        "name": {
+          "en": "Wheat pasta, dry",
+          "da": "Pasta, tør"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "wheat pasta, dry",
+            "pasta dry"
+          ],
+          "da": [
+            "pasta, tør"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 351.5,
+          "proteinGrams": 13,
+          "carbsGrams": 70,
+          "fatGrams": 1.5,
+          "fiberGrams": 3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "pasta_wholewheat_dry",
+        "name": {
+          "en": "Wholewheat pasta, dry",
+          "da": "Fuldkornspasta, tør"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "wholewheat pasta, dry",
+            "pasta wholewheat dry"
+          ],
+          "da": [
+            "fuldkornspasta, tør"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 342.5,
+          "proteinGrams": 13,
+          "carbsGrams": 63,
+          "fatGrams": 2.5,
+          "fiberGrams": 8,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "lasagne_sheets_dry",
+        "name": {
+          "en": "Lasagne sheets, dry",
+          "da": "Lasagneplader, tørre"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "lasagne sheets, dry",
+            "lasagne sheets dry"
+          ],
+          "da": [
+            "lasagneplader, tørre"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 351.5,
+          "proteinGrams": 13,
+          "carbsGrams": 70,
+          "fatGrams": 1.5,
+          "fiberGrams": 3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "couscous_dry",
+        "name": {
+          "en": "Couscous, dry",
+          "da": "Couscous, tør"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "couscous, dry",
+            "couscous dry"
+          ],
+          "da": [
+            "couscous, tør"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 347.5,
+          "proteinGrams": 12,
+          "carbsGrams": 69,
+          "fatGrams": 1.5,
+          "fiberGrams": 5,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "bulgur_dry",
+        "name": {
+          "en": "Bulgur, dry",
+          "da": "Bulgur, tør"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "bulgur, dry",
+            "bulgur dry"
+          ],
+          "da": [
+            "bulgur, tør"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 335.7,
+          "proteinGrams": 12,
+          "carbsGrams": 63,
+          "fatGrams": 1.3,
+          "fiberGrams": 12,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "pearl_barley_dry",
+        "name": {
+          "en": "Pearl barley, dry",
+          "da": "Perlebyg, tør"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "pearl barley, dry",
+            "pearl barley dry"
+          ],
+          "da": [
+            "perlebyg, tør"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 333.5,
+          "proteinGrams": 10,
+          "carbsGrams": 65,
+          "fatGrams": 1.5,
+          "fiberGrams": 10,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "buckwheat_dry",
+        "name": {
+          "en": "Buckwheat groats, dry",
+          "da": "Boghvede, tør"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "buckwheat groats, dry",
+            "buckwheat dry"
+          ],
+          "da": [
+            "boghvede, tør"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 343,
+          "proteinGrams": 12,
+          "carbsGrams": 62,
+          "fatGrams": 3,
+          "fiberGrams": 10,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "egg_noodles_dry",
+        "name": {
+          "en": "Egg noodles, dry",
+          "da": "Ægnudler, tørre"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "egg noodles, dry",
+            "egg noodles dry"
+          ],
+          "da": [
+            "ægnudler, tørre"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten",
+          "eggs"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 366,
+          "proteinGrams": 13,
+          "carbsGrams": 68,
+          "fatGrams": 4,
+          "fiberGrams": 3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "rice_noodles_dry",
+        "name": {
+          "en": "Rice noodles, dry",
+          "da": "Risnudler, tørre"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "rice noodles, dry",
+            "rice noodles dry"
+          ],
+          "da": [
+            "risnudler, tørre"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 355,
+          "proteinGrams": 6,
+          "carbsGrams": 80,
+          "fatGrams": 1,
+          "fiberGrams": 1,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "rye_bread",
+        "name": {
+          "en": "Wholegrain rye bread",
+          "da": "Fuldkornsrugbrød"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "wholegrain rye bread",
+            "rye bread"
+          ],
+          "da": [
+            "fuldkornsrugbrød"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 213,
+          "proteinGrams": 6,
+          "carbsGrams": 36,
+          "fatGrams": 3,
+          "fiberGrams": 9,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "wholegrain_bread",
+        "name": {
+          "en": "Wholegrain bread",
+          "da": "Fuldkornsbrød"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "wholegrain bread"
+          ],
+          "da": [
+            "fuldkornsbrød"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 250,
+          "proteinGrams": 10,
+          "carbsGrams": 40,
+          "fatGrams": 4,
+          "fiberGrams": 7,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "tortilla_wholewheat",
+        "name": {
+          "en": "Wholewheat tortilla",
+          "da": "Fuldkornstortilla"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "wholewheat tortilla",
+            "tortilla wholewheat"
+          ],
+          "da": [
+            "fuldkornstortilla"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 314,
+          "proteinGrams": 9,
+          "carbsGrams": 48,
+          "fatGrams": 8,
+          "fiberGrams": 7,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "pita_wholewheat",
+        "name": {
+          "en": "Wholewheat pita",
+          "da": "Fuldkornspita"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "wholewheat pita",
+            "pita wholewheat"
+          ],
+          "da": [
+            "fuldkornspita"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 266.5,
+          "proteinGrams": 10,
+          "carbsGrams": 48,
+          "fatGrams": 2.5,
+          "fiberGrams": 6,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "flour_wheat",
+        "name": {
+          "en": "Plain wheat flour",
+          "da": "Hvedemel"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "plain wheat flour",
+            "flour wheat"
+          ],
+          "da": [
+            "hvedemel"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 347,
+          "proteinGrams": 10,
+          "carbsGrams": 73,
+          "fatGrams": 1,
+          "fiberGrams": 3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "breadcrumbs",
+        "name": {
+          "en": "Plain dried breadcrumbs",
+          "da": "Rasp"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "plain dried breadcrumbs",
+            "breadcrumbs"
+          ],
+          "da": [
+            "rasp"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 373,
+          "proteinGrams": 12,
+          "carbsGrams": 68,
+          "fatGrams": 5,
+          "fiberGrams": 4,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "potato",
+        "name": {
+          "en": "Potatoes, edible weight",
+          "da": "Kartofler, spiselig vægt"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "potatoes, edible weight",
+            "potato"
+          ],
+          "da": [
+            "kartofler, spiselig vægt"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 74.9,
+          "proteinGrams": 2,
+          "carbsGrams": 15.5,
+          "fatGrams": 0.1,
+          "fiberGrams": 2,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "sweet_potato",
+        "name": {
+          "en": "Sweet potato, edible weight",
+          "da": "Sød kartoffel, spiselig vægt"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "sweet potato, edible weight",
+            "sweet potato"
+          ],
+          "da": [
+            "sød kartoffel, spiselig vægt"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 81.3,
+          "proteinGrams": 1.6,
+          "carbsGrams": 17,
+          "fatGrams": 0.1,
+          "fiberGrams": 3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "gnocchi_potato",
+        "name": {
+          "en": "Fresh potato gnocchi",
+          "da": "Friske kartoffelgnocchi"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_cook",
+        "aliases": {
+          "en": [
+            "fresh potato gnocchi",
+            "gnocchi potato"
+          ],
+          "da": [
+            "friske kartoffelgnocchi"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 149,
+          "proteinGrams": 4,
+          "carbsGrams": 30,
+          "fatGrams": 1,
+          "fiberGrams": 2,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "biscuit_digestive",
+        "name": {
+          "en": "Digestive biscuits",
+          "da": "Digestivekiks"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "digestive biscuits",
+            "biscuit digestive"
+          ],
+          "da": [
+            "digestivekiks"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 464,
+          "proteinGrams": 7,
+          "carbsGrams": 62,
+          "fatGrams": 20,
+          "fiberGrams": 4,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "ladyfingers",
+        "name": {
+          "en": "Ladyfinger sponge biscuits",
+          "da": "Ladyfingers"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "ladyfinger sponge biscuits",
+            "ladyfingers"
+          ],
+          "da": [
+            "ladyfingers"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten",
+          "eggs"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 370,
+          "proteinGrams": 8,
+          "carbsGrams": 75,
+          "fatGrams": 4,
+          "fiberGrams": 1,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "semolina_wheat",
+        "name": {
+          "en": "Wheat semolina",
+          "da": "Semulje"
+        },
+        "group": "carbohydrates",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "wheat semolina",
+            "semolina wheat"
+          ],
+          "da": [
+            "semulje"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 341,
+          "proteinGrams": 12,
+          "carbsGrams": 69,
+          "fatGrams": 1,
+          "fiberGrams": 4,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      }
+    ],
+    "vegetables": [
+      {
+        "normalizedIngredient": "onion",
+        "name": {
+          "en": "Onion",
+          "da": "Løg"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "onion"
+          ],
+          "da": [
+            "løg"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 39.1,
+          "proteinGrams": 1.1,
+          "carbsGrams": 7.6,
+          "fatGrams": 0.1,
+          "fiberGrams": 1.7,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "red_onion",
+        "name": {
+          "en": "Red onion",
+          "da": "Rødløg"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "red onion"
+          ],
+          "da": [
+            "rødløg"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 39.1,
+          "proteinGrams": 1.1,
+          "carbsGrams": 7.6,
+          "fatGrams": 0.1,
+          "fiberGrams": 1.7,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "garlic",
+        "name": {
+          "en": "Garlic",
+          "da": "Hvidløg"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "garlic"
+          ],
+          "da": [
+            "hvidløg"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 144.5,
+          "proteinGrams": 6,
+          "carbsGrams": 28,
+          "fatGrams": 0.5,
+          "fiberGrams": 2,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "carrot",
+        "name": {
+          "en": "Carrot",
+          "da": "Gulerod"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "carrot"
+          ],
+          "da": [
+            "gulerod"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 37.4,
+          "proteinGrams": 0.8,
+          "carbsGrams": 6.8,
+          "fatGrams": 0.2,
+          "fiberGrams": 2.6,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "bell_pepper",
+        "name": {
+          "en": "Bell pepper",
+          "da": "Peberfrugt"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "bell pepper"
+          ],
+          "da": [
+            "peberfrugt"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 26.7,
+          "proteinGrams": 1,
+          "carbsGrams": 4,
+          "fatGrams": 0.3,
+          "fiberGrams": 2,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "courgette",
+        "name": {
+          "en": "Courgette",
+          "da": "Squash"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "courgette"
+          ],
+          "da": [
+            "squash"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 17.5,
+          "proteinGrams": 1.2,
+          "carbsGrams": 2,
+          "fatGrams": 0.3,
+          "fiberGrams": 1,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "aubergine",
+        "name": {
+          "en": "Aubergine",
+          "da": "Aubergine"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "aubergine"
+          ],
+          "da": [
+            "aubergine"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 23.8,
+          "proteinGrams": 1,
+          "carbsGrams": 3,
+          "fatGrams": 0.2,
+          "fiberGrams": 3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "broccoli",
+        "name": {
+          "en": "Broccoli",
+          "da": "Broccoli"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "broccoli"
+          ],
+          "da": [
+            "broccoli"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 32.8,
+          "proteinGrams": 2.8,
+          "carbsGrams": 3,
+          "fatGrams": 0.4,
+          "fiberGrams": 3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "cauliflower",
+        "name": {
+          "en": "Cauliflower",
+          "da": "Blomkål"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "cauliflower"
+          ],
+          "da": [
+            "blomkål"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 24.7,
+          "proteinGrams": 2,
+          "carbsGrams": 2.5,
+          "fatGrams": 0.3,
+          "fiberGrams": 2,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "white_cabbage",
+        "name": {
+          "en": "White cabbage",
+          "da": "Hvidkål"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "white cabbage"
+          ],
+          "da": [
+            "hvidkål"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 26.0,
+          "proteinGrams": 1.3,
+          "carbsGrams": 3.5,
+          "fatGrams": 0.2,
+          "fiberGrams": 2.5,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "red_cabbage",
+        "name": {
+          "en": "Red cabbage",
+          "da": "Rødkål"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "red cabbage"
+          ],
+          "da": [
+            "rødkål"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 30.4,
+          "proteinGrams": 1.4,
+          "carbsGrams": 4.5,
+          "fatGrams": 0.2,
+          "fiberGrams": 2.5,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "mushroom",
+        "name": {
+          "en": "Mushrooms",
+          "da": "Champignon"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "mushrooms",
+            "mushroom"
+          ],
+          "da": [
+            "champignon"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 19.9,
+          "proteinGrams": 3,
+          "carbsGrams": 0.8,
+          "fatGrams": 0.3,
+          "fiberGrams": 1,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "spinach_fresh",
+        "name": {
+          "en": "Fresh spinach",
+          "da": "Frisk spinat"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "fresh spinach",
+            "spinach fresh"
+          ],
+          "da": [
+            "frisk spinat"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 23.6,
+          "proteinGrams": 2.9,
+          "carbsGrams": 1,
+          "fatGrams": 0.4,
+          "fiberGrams": 2.2,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "cucumber",
+        "name": {
+          "en": "Cucumber",
+          "da": "Agurk"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "cucumber"
+          ],
+          "da": [
+            "agurk"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 12.3,
+          "proteinGrams": 0.7,
+          "carbsGrams": 1.8,
+          "fatGrams": 0.1,
+          "fiberGrams": 0.7,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "tomato",
+        "name": {
+          "en": "Tomato",
+          "da": "Tomat"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "tomato"
+          ],
+          "da": [
+            "tomat"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 18.6,
+          "proteinGrams": 0.9,
+          "carbsGrams": 2.7,
+          "fatGrams": 0.2,
+          "fiberGrams": 1.2,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "romaine_lettuce",
+        "name": {
+          "en": "Romaine lettuce",
+          "da": "Romainesalat"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "romaine lettuce"
+          ],
+          "da": [
+            "romainesalat"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 17.7,
+          "proteinGrams": 1.2,
+          "carbsGrams": 1.5,
+          "fatGrams": 0.3,
+          "fiberGrams": 2.1,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "mixed_salad_leaves",
+        "name": {
+          "en": "Mixed salad leaves",
+          "da": "Blandet salat"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "mixed salad leaves"
+          ],
+          "da": [
+            "blandet salat"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 17.7,
+          "proteinGrams": 1.5,
+          "carbsGrams": 1.5,
+          "fatGrams": 0.3,
+          "fiberGrams": 1.5,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "leek",
+        "name": {
+          "en": "Leek",
+          "da": "Porre"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "leek"
+          ],
+          "da": [
+            "porre"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 40.7,
+          "proteinGrams": 1.5,
+          "carbsGrams": 7,
+          "fatGrams": 0.3,
+          "fiberGrams": 2,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "pumpkin",
+        "name": {
+          "en": "Pumpkin or winter squash",
+          "da": "Græskar"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "pumpkin or winter squash",
+            "pumpkin"
+          ],
+          "da": [
+            "græskar"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 31.9,
+          "proteinGrams": 1,
+          "carbsGrams": 6,
+          "fatGrams": 0.1,
+          "fiberGrams": 1.5,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "radish",
+        "name": {
+          "en": "Radish",
+          "da": "Radise"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "radish"
+          ],
+          "da": [
+            "radise"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 14.1,
+          "proteinGrams": 0.7,
+          "carbsGrams": 1.8,
+          "fatGrams": 0.1,
+          "fiberGrams": 1.6,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "spring_onion",
+        "name": {
+          "en": "Spring onion",
+          "da": "Forårsløg"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "spring onion"
+          ],
+          "da": [
+            "forårsløg"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 33.0,
+          "proteinGrams": 1.8,
+          "carbsGrams": 4.7,
+          "fatGrams": 0.2,
+          "fiberGrams": 2.6,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "celery",
+        "name": {
+          "en": "Celery",
+          "da": "Bladselleri"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "celery"
+          ],
+          "da": [
+            "bladselleri"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "celery"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 13.4,
+          "proteinGrams": 0.7,
+          "carbsGrams": 1.4,
+          "fatGrams": 0.2,
+          "fiberGrams": 1.6,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "spinach_frozen",
+        "name": {
+          "en": "Frozen spinach",
+          "da": "Frossen spinat"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "frozen",
+        "aliases": {
+          "en": [
+            "frozen spinach",
+            "spinach frozen"
+          ],
+          "da": [
+            "frossen spinat"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 25.5,
+          "proteinGrams": 3,
+          "carbsGrams": 1,
+          "fatGrams": 0.5,
+          "fiberGrams": 2.5,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "peas_frozen",
+        "name": {
+          "en": "Frozen peas",
+          "da": "Frosne ærter"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "frozen",
+        "aliases": {
+          "en": [
+            "frozen peas",
+            "peas frozen"
+          ],
+          "da": [
+            "frosne ærter"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 73.4,
+          "proteinGrams": 5.5,
+          "carbsGrams": 9,
+          "fatGrams": 0.6,
+          "fiberGrams": 5,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "green_beans_frozen",
+        "name": {
+          "en": "Frozen green beans",
+          "da": "Frosne grønne bønner"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "frozen",
+        "aliases": {
+          "en": [
+            "frozen green beans",
+            "green beans frozen"
+          ],
+          "da": [
+            "frosne grønne bønner"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 29.0,
+          "proteinGrams": 1.8,
+          "carbsGrams": 3.5,
+          "fatGrams": 0.2,
+          "fiberGrams": 3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "sweetcorn_canned",
+        "name": {
+          "en": "Canned sweetcorn, drained",
+          "da": "Majs på dåse, drænet"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "canned_drained",
+        "aliases": {
+          "en": [
+            "canned sweetcorn, drained",
+            "sweetcorn canned"
+          ],
+          "da": [
+            "majs på dåse, drænet"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 91.5,
+          "proteinGrams": 3,
+          "carbsGrams": 15,
+          "fatGrams": 1.5,
+          "fiberGrams": 3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "beetroot_cooked",
+        "name": {
+          "en": "Plain cooked beetroot",
+          "da": "Kogte rødbeder uden lage"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "cooked",
+        "aliases": {
+          "en": [
+            "plain cooked beetroot",
+            "beetroot cooked"
+          ],
+          "da": [
+            "kogte rødbeder uden lage"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 42.8,
+          "proteinGrams": 1.5,
+          "carbsGrams": 7.5,
+          "fatGrams": 0.2,
+          "fiberGrams": 2.5,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "olives",
+        "name": {
+          "en": "Pitted olives, drained",
+          "da": "Oliven uden sten, drænet"
+        },
+        "group": "vegetables",
+        "defaultUnit": "g",
+        "quantityState": "drained",
+        "aliases": {
+          "en": [
+            "pitted olives, drained",
+            "olives"
+          ],
+          "da": [
+            "oliven uden sten, drænet"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 147.0,
+          "proteinGrams": 1,
+          "carbsGrams": 0.5,
+          "fatGrams": 15,
+          "fiberGrams": 3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      }
+    ],
+    "fruit": [
+      {
+        "normalizedIngredient": "banana",
+        "name": {
+          "en": "Banana, peeled",
+          "da": "Banan uden skræl"
+        },
+        "group": "fruit",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "banana, peeled",
+            "banana"
+          ],
+          "da": [
+            "banan uden skræl"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 92.3,
+          "proteinGrams": 1.1,
+          "carbsGrams": 20,
+          "fatGrams": 0.3,
+          "fiberGrams": 2.6,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "apple",
+        "name": {
+          "en": "Apple, cored",
+          "da": "Æble uden kernehus"
+        },
+        "group": "fruit",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "apple, cored",
+            "apple"
+          ],
+          "da": [
+            "æble uden kernehus"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 51.8,
+          "proteinGrams": 0.3,
+          "carbsGrams": 11,
+          "fatGrams": 0.2,
+          "fiberGrams": 2.4,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "pear",
+        "name": {
+          "en": "Pear, cored",
+          "da": "Pære uden kernehus"
+        },
+        "group": "fruit",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "pear, cored",
+            "pear"
+          ],
+          "da": [
+            "pære uden kernehus"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 56.5,
+          "proteinGrams": 0.4,
+          "carbsGrams": 12,
+          "fatGrams": 0.1,
+          "fiberGrams": 3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "blueberries_fresh",
+        "name": {
+          "en": "Fresh blueberries",
+          "da": "Friske blåbær"
+        },
+        "group": "fruit",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "fresh blueberries",
+            "blueberries fresh"
+          ],
+          "da": [
+            "friske blåbær"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 50.3,
+          "proteinGrams": 0.7,
+          "carbsGrams": 10,
+          "fatGrams": 0.3,
+          "fiberGrams": 2.4,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "strawberries_fresh",
+        "name": {
+          "en": "Fresh strawberries",
+          "da": "Friske jordbær"
+        },
+        "group": "fruit",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "fresh strawberries",
+            "strawberries fresh"
+          ],
+          "da": [
+            "friske jordbær"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 31.5,
+          "proteinGrams": 0.7,
+          "carbsGrams": 5.5,
+          "fatGrams": 0.3,
+          "fiberGrams": 2,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "orange_flesh",
+        "name": {
+          "en": "Orange, peeled",
+          "da": "Appelsin uden skræl"
+        },
+        "group": "fruit",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "orange, peeled",
+            "orange flesh"
+          ],
+          "da": [
+            "appelsin uden skræl"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 45.3,
+          "proteinGrams": 0.9,
+          "carbsGrams": 9,
+          "fatGrams": 0.1,
+          "fiberGrams": 2.4,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "avocado",
+        "name": {
+          "en": "Avocado flesh",
+          "da": "Avocadokød"
+        },
+        "group": "fruit",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "avocado flesh",
+            "avocado"
+          ],
+          "da": [
+            "avocadokød"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 163.6,
+          "proteinGrams": 2,
+          "carbsGrams": 1.8,
+          "fatGrams": 15,
+          "fiberGrams": 6.7,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "mixed_berries_frozen",
+        "name": {
+          "en": "Frozen mixed berries",
+          "da": "Frosne blandede bær"
+        },
+        "group": "fruit",
+        "defaultUnit": "g",
+        "quantityState": "frozen",
+        "aliases": {
+          "en": [
+            "frozen mixed berries",
+            "mixed berries frozen"
+          ],
+          "da": [
+            "frosne blandede bær"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 40.5,
+          "proteinGrams": 1,
+          "carbsGrams": 6,
+          "fatGrams": 0.5,
+          "fiberGrams": 4,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "mango_frozen",
+        "name": {
+          "en": "Frozen mango pieces",
+          "da": "Frosne mangotern"
+        },
+        "group": "fruit",
+        "defaultUnit": "g",
+        "quantityState": "frozen",
+        "aliases": {
+          "en": [
+            "frozen mango pieces",
+            "mango frozen"
+          ],
+          "da": [
+            "frosne mangotern"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 62.0,
+          "proteinGrams": 0.8,
+          "carbsGrams": 13,
+          "fatGrams": 0.4,
+          "fiberGrams": 1.6,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "lemon_juice",
+        "name": {
+          "en": "Lemon juice",
+          "da": "Citronsaft"
+        },
+        "group": "fruit",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "lemon juice"
+          ],
+          "da": [
+            "citronsaft"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 12.7,
+          "proteinGrams": 0.4,
+          "carbsGrams": 2.5,
+          "fatGrams": 0.1,
+          "fiberGrams": 0.1,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "lime_juice",
+        "name": {
+          "en": "Lime juice",
+          "da": "Limesaft"
+        },
+        "group": "fruit",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "lime juice"
+          ],
+          "da": [
+            "limesaft"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 12.7,
+          "proteinGrams": 0.4,
+          "carbsGrams": 2.5,
+          "fatGrams": 0.1,
+          "fiberGrams": 0.1,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "raisins",
+        "name": {
+          "en": "Raisins",
+          "da": "Rosiner"
+        },
+        "group": "fruit",
+        "defaultUnit": "g",
+        "quantityState": "dried",
+        "aliases": {
+          "en": [
+            "raisins"
+          ],
+          "da": [
+            "rosiner"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 316.5,
+          "proteinGrams": 3,
+          "carbsGrams": 73,
+          "fatGrams": 0.5,
+          "fiberGrams": 4,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "pineapple_canned_juice",
+        "name": {
+          "en": "Pineapple in juice, drained",
+          "da": "Ananas i egen saft, drænet"
+        },
+        "group": "fruit",
+        "defaultUnit": "g",
+        "quantityState": "canned_drained",
+        "aliases": {
+          "en": [
+            "pineapple in juice, drained",
+            "pineapple canned juice"
+          ],
+          "da": [
+            "ananas i egen saft, drænet"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 53.5,
+          "proteinGrams": 0.5,
+          "carbsGrams": 12,
+          "fatGrams": 0.1,
+          "fiberGrams": 1.3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      }
+    ],
+    "legumes": [
+      {
+        "normalizedIngredient": "lentils_red_dry",
+        "name": {
+          "en": "Red lentils, dry",
+          "da": "Røde linser, tørre"
+        },
+        "group": "legumes",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "red lentils, dry",
+            "lentils red dry"
+          ],
+          "da": [
+            "røde linser, tørre"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 331.5,
+          "proteinGrams": 25,
+          "carbsGrams": 49,
+          "fatGrams": 1.5,
+          "fiberGrams": 11,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "lentils_green_canned",
+        "name": {
+          "en": "Canned green or brown lentils, drained",
+          "da": "Grønne eller brune linser på dåse, drænet"
+        },
+        "group": "legumes",
+        "defaultUnit": "g",
+        "quantityState": "canned_drained",
+        "aliases": {
+          "en": [
+            "canned green or brown lentils, drained",
+            "lentils green canned"
+          ],
+          "da": [
+            "grønne eller brune linser på dåse, drænet"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 92.5,
+          "proteinGrams": 7,
+          "carbsGrams": 12,
+          "fatGrams": 0.5,
+          "fiberGrams": 6,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "kidney_beans_canned",
+        "name": {
+          "en": "Canned kidney beans, drained",
+          "da": "Kidneybønner på dåse, drænet"
+        },
+        "group": "legumes",
+        "defaultUnit": "g",
+        "quantityState": "canned_drained",
+        "aliases": {
+          "en": [
+            "canned kidney beans, drained",
+            "kidney beans canned"
+          ],
+          "da": [
+            "kidneybønner på dåse, drænet"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 99.5,
+          "proteinGrams": 7.5,
+          "carbsGrams": 13,
+          "fatGrams": 0.5,
+          "fiberGrams": 6.5,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "black_beans_canned",
+        "name": {
+          "en": "Canned black beans, drained",
+          "da": "Sorte bønner på dåse, drænet"
+        },
+        "group": "legumes",
+        "defaultUnit": "g",
+        "quantityState": "canned_drained",
+        "aliases": {
+          "en": [
+            "canned black beans, drained",
+            "black beans canned"
+          ],
+          "da": [
+            "sorte bønner på dåse, drænet"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 100.5,
+          "proteinGrams": 7.5,
+          "carbsGrams": 13,
+          "fatGrams": 0.5,
+          "fiberGrams": 7,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "chickpeas_canned",
+        "name": {
+          "en": "Canned chickpeas, drained",
+          "da": "Kikærter på dåse, drænet"
+        },
+        "group": "legumes",
+        "defaultUnit": "g",
+        "quantityState": "canned_drained",
+        "aliases": {
+          "en": [
+            "canned chickpeas, drained",
+            "chickpeas canned"
+          ],
+          "da": [
+            "kikærter på dåse, drænet"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 130.5,
+          "proteinGrams": 7,
+          "carbsGrams": 17,
+          "fatGrams": 2.5,
+          "fiberGrams": 6,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "white_beans_canned",
+        "name": {
+          "en": "Canned white beans, drained",
+          "da": "Hvide bønner på dåse, drænet"
+        },
+        "group": "legumes",
+        "defaultUnit": "g",
+        "quantityState": "canned_drained",
+        "aliases": {
+          "en": [
+            "canned white beans, drained",
+            "white beans canned"
+          ],
+          "da": [
+            "hvide bønner på dåse, drænet"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 98.5,
+          "proteinGrams": 7.5,
+          "carbsGrams": 13,
+          "fatGrams": 0.5,
+          "fiberGrams": 6,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "edamame_frozen",
+        "name": {
+          "en": "Frozen shelled edamame",
+          "da": "Frosne edamamebønner uden bælg"
+        },
+        "group": "legumes",
+        "defaultUnit": "g",
+        "quantityState": "frozen",
+        "aliases": {
+          "en": [
+            "frozen shelled edamame",
+            "edamame frozen"
+          ],
+          "da": [
+            "frosne edamamebønner uden bælg"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "soy"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 113.0,
+          "proteinGrams": 11,
+          "carbsGrams": 3.5,
+          "fatGrams": 5,
+          "fiberGrams": 5,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      }
+    ],
+    "fats": [
+      {
+        "normalizedIngredient": "olive_oil",
+        "name": {
+          "en": "Olive oil",
+          "da": "Olivenolie"
+        },
+        "group": "fats",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "olive oil"
+          ],
+          "da": [
+            "olivenolie"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 900,
+          "proteinGrams": 0,
+          "carbsGrams": 0,
+          "fatGrams": 100,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "rapeseed_oil",
+        "name": {
+          "en": "Rapeseed oil",
+          "da": "Rapsolie"
+        },
+        "group": "fats",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "rapeseed oil"
+          ],
+          "da": [
+            "rapsolie"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 900,
+          "proteinGrams": 0,
+          "carbsGrams": 0,
+          "fatGrams": 100,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "sesame_oil",
+        "name": {
+          "en": "Toasted sesame oil",
+          "da": "Ristet sesamolie"
+        },
+        "group": "fats",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "toasted sesame oil",
+            "sesame oil"
+          ],
+          "da": [
+            "ristet sesamolie"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "sesame"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 900,
+          "proteinGrams": 0,
+          "carbsGrams": 0,
+          "fatGrams": 100,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "butter",
+        "name": {
+          "en": "Butter",
+          "da": "Smør"
+        },
+        "group": "fats",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "butter"
+          ],
+          "da": [
+            "smør"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "milk"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 742.0,
+          "proteinGrams": 0.5,
+          "carbsGrams": 0.5,
+          "fatGrams": 82,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "peanut_butter",
+        "name": {
+          "en": "Peanut butter, unsweetened",
+          "da": "Peanutbutter uden tilsat sukker"
+        },
+        "group": "fats",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "peanut butter, unsweetened",
+            "peanut butter"
+          ],
+          "da": [
+            "peanutbutter uden tilsat sukker"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "peanuts"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 614,
+          "proteinGrams": 26,
+          "carbsGrams": 12,
+          "fatGrams": 50,
+          "fiberGrams": 6,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "walnuts",
+        "name": {
+          "en": "Walnuts",
+          "da": "Valnødder"
+        },
+        "group": "fats",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "walnuts"
+          ],
+          "da": [
+            "valnødder"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "tree_nuts"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 687,
+          "proteinGrams": 15,
+          "carbsGrams": 7,
+          "fatGrams": 65,
+          "fiberGrams": 7,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "almonds",
+        "name": {
+          "en": "Almonds",
+          "da": "Mandler"
+        },
+        "group": "fats",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "almonds"
+          ],
+          "da": [
+            "mandler"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "tree_nuts"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 611,
+          "proteinGrams": 21,
+          "carbsGrams": 7,
+          "fatGrams": 53,
+          "fiberGrams": 11,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "pumpkin_seeds",
+        "name": {
+          "en": "Pumpkin seeds",
+          "da": "Græskarkerner"
+        },
+        "group": "fats",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "pumpkin seeds"
+          ],
+          "da": [
+            "græskarkerner"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 593,
+          "proteinGrams": 30,
+          "carbsGrams": 5,
+          "fatGrams": 49,
+          "fiberGrams": 6,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "sunflower_seeds",
+        "name": {
+          "en": "Sunflower seeds",
+          "da": "Solsikkekerner"
+        },
+        "group": "fats",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "sunflower seeds"
+          ],
+          "da": [
+            "solsikkekerner"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 605,
+          "proteinGrams": 21,
+          "carbsGrams": 11,
+          "fatGrams": 51,
+          "fiberGrams": 9,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "sesame_seeds",
+        "name": {
+          "en": "Sesame seeds",
+          "da": "Sesamfrø"
+        },
+        "group": "fats",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "sesame seeds"
+          ],
+          "da": [
+            "sesamfrø"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "sesame"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 586,
+          "proteinGrams": 18,
+          "carbsGrams": 10,
+          "fatGrams": 50,
+          "fiberGrams": 12,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "chia_seeds",
+        "name": {
+          "en": "Chia seeds",
+          "da": "Chiafrø"
+        },
+        "group": "fats",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "chia seeds"
+          ],
+          "da": [
+            "chiafrø"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 435,
+          "proteinGrams": 17,
+          "carbsGrams": 5,
+          "fatGrams": 31,
+          "fiberGrams": 34,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "tahini",
+        "name": {
+          "en": "Tahini",
+          "da": "Tahini"
+        },
+        "group": "fats",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "tahini"
+          ],
+          "da": [
+            "tahini"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "sesame"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 613,
+          "proteinGrams": 17,
+          "carbsGrams": 8,
+          "fatGrams": 55,
+          "fiberGrams": 9,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      }
+    ],
+    "sauces": [
+      {
+        "normalizedIngredient": "tomato_canned",
+        "name": {
+          "en": "Chopped canned tomatoes, with juice",
+          "da": "Hakkede tomater på dåse med saft"
+        },
+        "group": "sauces",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "chopped canned tomatoes, with juice",
+            "tomato canned"
+          ],
+          "da": [
+            "hakkede tomater på dåse med saft"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 21.0,
+          "proteinGrams": 1.2,
+          "carbsGrams": 3,
+          "fatGrams": 0.2,
+          "fiberGrams": 1.2,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "tomato_passata",
+        "name": {
+          "en": "Tomato passata",
+          "da": "Passata"
+        },
+        "group": "sauces",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "tomato passata"
+          ],
+          "da": [
+            "passata"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 26.8,
+          "proteinGrams": 1.5,
+          "carbsGrams": 4,
+          "fatGrams": 0.2,
+          "fiberGrams": 1.5,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "tomato_paste",
+        "name": {
+          "en": "Tomato paste",
+          "da": "Tomatpuré"
+        },
+        "group": "sauces",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "tomato paste"
+          ],
+          "da": [
+            "tomatpuré"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 88.5,
+          "proteinGrams": 4,
+          "carbsGrams": 15,
+          "fatGrams": 0.5,
+          "fiberGrams": 4,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "soy_sauce_reduced_salt",
+        "name": {
+          "en": "Reduced-salt soy sauce",
+          "da": "Sojasauce med mindre salt"
+        },
+        "group": "sauces",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "reduced-salt soy sauce",
+            "soy sauce reduced salt"
+          ],
+          "da": [
+            "sojasauce med mindre salt"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "soy",
+          "cereals_containing_gluten"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 40,
+          "proteinGrams": 6,
+          "carbsGrams": 4,
+          "fatGrams": 0,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "dijon_mustard",
+        "name": {
+          "en": "Dijon mustard",
+          "da": "Dijonsennep"
+        },
+        "group": "sauces",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "dijon mustard"
+          ],
+          "da": [
+            "dijonsennep"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "mustard"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 136,
+          "proteinGrams": 5,
+          "carbsGrams": 5,
+          "fatGrams": 10,
+          "fiberGrams": 3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "ketchup",
+        "name": {
+          "en": "Tomato ketchup",
+          "da": "Tomatketchup"
+        },
+        "group": "sauces",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "tomato ketchup",
+            "ketchup"
+          ],
+          "da": [
+            "tomatketchup"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 99.8,
+          "proteinGrams": 1,
+          "carbsGrams": 23,
+          "fatGrams": 0.2,
+          "fiberGrams": 1,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "balsamic_vinegar",
+        "name": {
+          "en": "Balsamic vinegar",
+          "da": "Balsamicoeddike"
+        },
+        "group": "sauces",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "balsamic vinegar"
+          ],
+          "da": [
+            "balsamicoeddike"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 68,
+          "proteinGrams": 0,
+          "carbsGrams": 17,
+          "fatGrams": 0,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "cider_vinegar",
+        "name": {
+          "en": "Cider vinegar",
+          "da": "Æblecidereddike"
+        },
+        "group": "sauces",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "cider vinegar"
+          ],
+          "da": [
+            "æblecidereddike"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 2.0,
+          "proteinGrams": 0,
+          "carbsGrams": 0.5,
+          "fatGrams": 0,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "sriracha",
+        "name": {
+          "en": "Sriracha chilli sauce",
+          "da": "Sriracha-chilisauce"
+        },
+        "group": "sauces",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "sriracha chilli sauce",
+            "sriracha"
+          ],
+          "da": [
+            "sriracha-chilisauce"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 78,
+          "proteinGrams": 1,
+          "carbsGrams": 18,
+          "fatGrams": 0,
+          "fiberGrams": 1,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "pesto_basil_vegetarian",
+        "name": {
+          "en": "Vegetarian basil pesto",
+          "da": "Basilikumpesto med vegetarisk ost"
+        },
+        "group": "sauces",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "vegetarian basil pesto",
+            "pesto basil vegetarian"
+          ],
+          "da": [
+            "basilikumpesto med vegetarisk ost"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "milk",
+          "tree_nuts"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 451,
+          "proteinGrams": 5,
+          "carbsGrams": 5,
+          "fatGrams": 45,
+          "fiberGrams": 3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "coconut_milk_light",
+        "name": {
+          "en": "Light coconut milk",
+          "da": "Let kokosmælk"
+        },
+        "group": "sauces",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "light coconut milk",
+            "coconut milk light"
+          ],
+          "da": [
+            "let kokosmælk"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 79,
+          "proteinGrams": 1,
+          "carbsGrams": 3,
+          "fatGrams": 7,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "mayonnaise_light",
+        "name": {
+          "en": "Light mayonnaise",
+          "da": "Let mayonnaise"
+        },
+        "group": "sauces",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "light mayonnaise",
+            "mayonnaise light"
+          ],
+          "da": [
+            "let mayonnaise"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "eggs",
+          "mustard"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 284,
+          "proteinGrams": 1,
+          "carbsGrams": 7,
+          "fatGrams": 28,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "worcestershire_sauce",
+        "name": {
+          "en": "Worcestershire sauce",
+          "da": "Worcestershiresauce"
+        },
+        "group": "sauces",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "worcestershire sauce"
+          ],
+          "da": [
+            "worcestershiresauce"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [
+          "fish"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 80,
+          "proteinGrams": 0,
+          "carbsGrams": 20,
+          "fatGrams": 0,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "salsa_tomato",
+        "name": {
+          "en": "Mild tomato salsa",
+          "da": "Mild tomatsalsa"
+        },
+        "group": "sauces",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "mild tomato salsa",
+            "salsa tomato"
+          ],
+          "da": [
+            "mild tomatsalsa"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 30.7,
+          "proteinGrams": 1,
+          "carbsGrams": 5,
+          "fatGrams": 0.3,
+          "fiberGrams": 2,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "barbecue_sauce",
+        "name": {
+          "en": "Barbecue sauce",
+          "da": "Barbecuesauce"
+        },
+        "group": "sauces",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "barbecue sauce"
+          ],
+          "da": [
+            "barbecuesauce"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 130.5,
+          "proteinGrams": 1,
+          "carbsGrams": 30,
+          "fatGrams": 0.5,
+          "fiberGrams": 1,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "vegetable_stock_low_salt",
+        "name": {
+          "en": "Prepared low-salt vegetable stock",
+          "da": "Tilberedt grøntsagsbouillon med mindre salt"
+        },
+        "group": "sauces",
+        "defaultUnit": "ml",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "prepared low-salt vegetable stock",
+            "vegetable stock low salt"
+          ],
+          "da": [
+            "tilberedt grøntsagsbouillon med mindre salt"
+          ]
+        },
+        "matchingAttributes": {
+          "concentration": "ready_to_use_not_concentrate",
+          "vegetarianRequired": true
+        },
+        "allergens": [
+          "celery"
+        ],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "ml",
+          "calories": 4.1,
+          "proteinGrams": 0.3,
+          "carbsGrams": 0.5,
+          "fatGrams": 0.1,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      }
+    ],
+    "spices": [
+      {
+        "normalizedIngredient": "salt",
+        "name": {
+          "en": "Salt",
+          "da": "Salt"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "salt"
+          ],
+          "da": [
+            "salt"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 0,
+          "proteinGrams": 0,
+          "carbsGrams": 0,
+          "fatGrams": 0,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "black_pepper",
+        "name": {
+          "en": "Black pepper",
+          "da": "Sort peber"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "black pepper"
+          ],
+          "da": [
+            "sort peber"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 269,
+          "proteinGrams": 10,
+          "carbsGrams": 38,
+          "fatGrams": 3,
+          "fiberGrams": 25,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "paprika_sweet",
+        "name": {
+          "en": "Sweet paprika",
+          "da": "Sød paprika"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "sweet paprika",
+            "paprika sweet"
+          ],
+          "da": [
+            "sød paprika"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 319,
+          "proteinGrams": 14,
+          "carbsGrams": 19,
+          "fatGrams": 13,
+          "fiberGrams": 35,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "paprika_smoked",
+        "name": {
+          "en": "Smoked paprika",
+          "da": "Røget paprika"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "smoked paprika",
+            "paprika smoked"
+          ],
+          "da": [
+            "røget paprika"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 319,
+          "proteinGrams": 14,
+          "carbsGrams": 19,
+          "fatGrams": 13,
+          "fiberGrams": 35,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "cumin_ground",
+        "name": {
+          "en": "Ground cumin",
+          "da": "Stødt spidskommen"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "ground cumin",
+            "cumin ground"
+          ],
+          "da": [
+            "stødt spidskommen"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 426,
+          "proteinGrams": 18,
+          "carbsGrams": 34,
+          "fatGrams": 22,
+          "fiberGrams": 10,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "coriander_ground",
+        "name": {
+          "en": "Ground coriander",
+          "da": "Stødt koriander"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "ground coriander",
+            "coriander ground"
+          ],
+          "da": [
+            "stødt koriander"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 346,
+          "proteinGrams": 12,
+          "carbsGrams": 13,
+          "fatGrams": 18,
+          "fiberGrams": 42,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "curry_powder",
+        "name": {
+          "en": "Mild curry powder",
+          "da": "Mild karry"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "mild curry powder",
+            "curry powder"
+          ],
+          "da": [
+            "mild karry"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 314,
+          "proteinGrams": 12,
+          "carbsGrams": 20,
+          "fatGrams": 14,
+          "fiberGrams": 30,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "garam_masala",
+        "name": {
+          "en": "Garam masala",
+          "da": "Garam masala"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "garam masala"
+          ],
+          "da": [
+            "garam masala"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 312,
+          "proteinGrams": 11,
+          "carbsGrams": 30,
+          "fatGrams": 12,
+          "fiberGrams": 20,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "oregano_dried",
+        "name": {
+          "en": "Dried oregano",
+          "da": "Tørret oregano"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "dried oregano",
+            "oregano dried"
+          ],
+          "da": [
+            "tørret oregano"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 262,
+          "proteinGrams": 9,
+          "carbsGrams": 26,
+          "fatGrams": 4,
+          "fiberGrams": 43,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "thyme_dried",
+        "name": {
+          "en": "Dried thyme",
+          "da": "Tørret timian"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "dried thyme",
+            "thyme dried"
+          ],
+          "da": [
+            "tørret timian"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 277,
+          "proteinGrams": 9,
+          "carbsGrams": 26,
+          "fatGrams": 7,
+          "fiberGrams": 37,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "chili_flakes",
+        "name": {
+          "en": "Chilli flakes",
+          "da": "Chiliflager"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "chilli flakes",
+            "chili flakes"
+          ],
+          "da": [
+            "chiliflager"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 306,
+          "proteinGrams": 12,
+          "carbsGrams": 25,
+          "fatGrams": 12,
+          "fiberGrams": 25,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "cinnamon_ground",
+        "name": {
+          "en": "Ground cinnamon",
+          "da": "Stødt kanel"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "ground cinnamon",
+            "cinnamon ground"
+          ],
+          "da": [
+            "stødt kanel"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 243,
+          "proteinGrams": 4,
+          "carbsGrams": 28,
+          "fatGrams": 1,
+          "fiberGrams": 53,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "nutmeg_ground",
+        "name": {
+          "en": "Ground nutmeg",
+          "da": "Stødt muskatnød"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "ground nutmeg",
+            "nutmeg ground"
+          ],
+          "da": [
+            "stødt muskatnød"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 500,
+          "proteinGrams": 6,
+          "carbsGrams": 28,
+          "fatGrams": 36,
+          "fiberGrams": 20,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "turmeric_ground",
+        "name": {
+          "en": "Ground turmeric",
+          "da": "Stødt gurkemeje"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "ground turmeric",
+            "turmeric ground"
+          ],
+          "da": [
+            "stødt gurkemeje"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 289,
+          "proteinGrams": 10,
+          "carbsGrams": 44,
+          "fatGrams": 3,
+          "fiberGrams": 23,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "allspice_ground",
+        "name": {
+          "en": "Ground allspice",
+          "da": "Stødt allehånde"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "ground allspice",
+            "allspice ground"
+          ],
+          "da": [
+            "stødt allehånde"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 269,
+          "proteinGrams": 6,
+          "carbsGrams": 30,
+          "fatGrams": 9,
+          "fiberGrams": 22,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "dill_fresh",
+        "name": {
+          "en": "Fresh dill",
+          "da": "Frisk dild"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "fresh dill",
+            "dill fresh"
+          ],
+          "da": [
+            "frisk dild"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 43.0,
+          "proteinGrams": 3.5,
+          "carbsGrams": 4,
+          "fatGrams": 1,
+          "fiberGrams": 2,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "parsley_fresh",
+        "name": {
+          "en": "Fresh parsley",
+          "da": "Frisk persille"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "fresh parsley",
+            "parsley fresh"
+          ],
+          "da": [
+            "frisk persille"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 37.2,
+          "proteinGrams": 3,
+          "carbsGrams": 3,
+          "fatGrams": 0.8,
+          "fiberGrams": 3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "basil_fresh",
+        "name": {
+          "en": "Fresh basil",
+          "da": "Frisk basilikum"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "fresh basil",
+            "basil fresh"
+          ],
+          "da": [
+            "frisk basilikum"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 25.4,
+          "proteinGrams": 3,
+          "carbsGrams": 1,
+          "fatGrams": 0.6,
+          "fiberGrams": 2,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "coriander_fresh",
+        "name": {
+          "en": "Fresh coriander",
+          "da": "Frisk koriander"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "fresh coriander",
+            "coriander fresh"
+          ],
+          "da": [
+            "frisk koriander"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 22.5,
+          "proteinGrams": 2,
+          "carbsGrams": 1,
+          "fatGrams": 0.5,
+          "fiberGrams": 3,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "mint_fresh",
+        "name": {
+          "en": "Fresh mint",
+          "da": "Frisk mynte"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "fresh mint",
+            "mint fresh"
+          ],
+          "da": [
+            "frisk mynte"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 53.2,
+          "proteinGrams": 3,
+          "carbsGrams": 5,
+          "fatGrams": 0.8,
+          "fiberGrams": 7,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "ginger_fresh",
+        "name": {
+          "en": "Fresh ginger",
+          "da": "Frisk ingefær"
+        },
+        "group": "spices",
+        "defaultUnit": "g",
+        "quantityState": "raw_edible",
+        "aliases": {
+          "en": [
+            "fresh ginger",
+            "ginger fresh"
+          ],
+          "da": [
+            "frisk ingefær"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 79.2,
+          "proteinGrams": 2,
+          "carbsGrams": 15,
+          "fatGrams": 0.8,
+          "fiberGrams": 2,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      }
+    ],
+    "other": [
+      {
+        "normalizedIngredient": "water",
+        "name": {
+          "en": "Water",
+          "da": "Vand"
+        },
+        "group": "other",
+        "defaultUnit": "ml",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "water"
+          ],
+          "da": [
+            "vand"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "ml",
+          "calories": 0,
+          "proteinGrams": 0,
+          "carbsGrams": 0,
+          "fatGrams": 0,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "cocoa_powder",
+        "name": {
+          "en": "Unsweetened cocoa powder",
+          "da": "Usødet kakaopulver"
+        },
+        "group": "other",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "unsweetened cocoa powder",
+            "cocoa powder"
+          ],
+          "da": [
+            "usødet kakaopulver"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 312,
+          "proteinGrams": 22,
+          "carbsGrams": 14,
+          "fatGrams": 12,
+          "fiberGrams": 30,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "dark_chocolate_70pct",
+        "name": {
+          "en": "Dark chocolate, 70% cocoa",
+          "da": "Mørk chokolade, 70% kakao"
+        },
+        "group": "other",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "dark chocolate, 70% cocoa",
+            "dark chocolate 70pct"
+          ],
+          "da": [
+            "mørk chokolade, 70% kakao"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 567,
+          "proteinGrams": 8,
+          "carbsGrams": 32,
+          "fatGrams": 43,
+          "fiberGrams": 10,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "sugar",
+        "name": {
+          "en": "Sugar",
+          "da": "Sukker"
+        },
+        "group": "other",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "sugar"
+          ],
+          "da": [
+            "sukker"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 400,
+          "proteinGrams": 0,
+          "carbsGrams": 100,
+          "fatGrams": 0,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "honey",
+        "name": {
+          "en": "Honey",
+          "da": "Honning"
+        },
+        "group": "other",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "honey"
+          ],
+          "da": [
+            "honning"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 329.2,
+          "proteinGrams": 0.3,
+          "carbsGrams": 82,
+          "fatGrams": 0,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "maple_syrup",
+        "name": {
+          "en": "Maple syrup",
+          "da": "Ahornsirup"
+        },
+        "group": "other",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "maple syrup"
+          ],
+          "da": [
+            "ahornsirup"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 268,
+          "proteinGrams": 0,
+          "carbsGrams": 67,
+          "fatGrams": 0,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "vanilla_extract",
+        "name": {
+          "en": "Alcohol-free vanilla flavouring",
+          "da": "Alkoholfri vaniljearoma"
+        },
+        "group": "other",
+        "defaultUnit": "g",
+        "quantityState": "ready_to_eat",
+        "aliases": {
+          "en": [
+            "alcohol-free vanilla flavouring",
+            "vanilla extract"
+          ],
+          "da": [
+            "alkoholfri vaniljearoma"
+          ]
+        },
+        "matchingAttributes": {
+          "alcoholFree": true
+        },
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 60,
+          "proteinGrams": 0,
+          "carbsGrams": 15,
+          "fatGrams": 0,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "baking_powder",
+        "name": {
+          "en": "Baking powder",
+          "da": "Bagepulver"
+        },
+        "group": "other",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "baking powder"
+          ],
+          "da": [
+            "bagepulver"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 112,
+          "proteinGrams": 0,
+          "carbsGrams": 28,
+          "fatGrams": 0,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "cornstarch",
+        "name": {
+          "en": "Cornflour / corn starch",
+          "da": "Majsstivelse"
+        },
+        "group": "other",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "cornflour / corn starch",
+            "cornstarch"
+          ],
+          "da": [
+            "majsstivelse"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 345.2,
+          "proteinGrams": 0.3,
+          "carbsGrams": 86,
+          "fatGrams": 0,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      },
+      {
+        "normalizedIngredient": "instant_coffee",
+        "name": {
+          "en": "Instant coffee granules",
+          "da": "Instantkaffe"
+        },
+        "group": "other",
+        "defaultUnit": "g",
+        "quantityState": "dry",
+        "aliases": {
+          "en": [
+            "instant coffee granules",
+            "instant coffee"
+          ],
+          "da": [
+            "instantkaffe"
+          ]
+        },
+        "matchingAttributes": {},
+        "allergens": [],
+        "nutritionReference": {
+          "basisQuantity": 100,
+          "basisUnit": "g",
+          "calories": 212.5,
+          "proteinGrams": 12,
+          "carbsGrams": 40,
+          "fatGrams": 0.5,
+          "fiberGrams": 0,
+          "provenance": "curated_generic_estimate",
+          "verifiedBrandedProduct": false
+        }
+      }
+    ]
+  }
+}

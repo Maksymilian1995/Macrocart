@@ -1,0 +1,90 @@
+{
+  "tagTaxonomyVersion": "1.0.0",
+  "tags": [
+    {
+      "id": "15-minute",
+      "definition": "Total elapsed estimate is at most 15 minutes; an inclusive ceiling."
+    },
+    {
+      "id": "30-minute",
+      "definition": "Total elapsed estimate is at most 30 minutes; an inclusive ceiling, not exactly 30."
+    },
+    {
+      "id": "breakfast",
+      "definition": "Suitable as a breakfast meal."
+    },
+    {
+      "id": "budget",
+      "definition": "The authored qualitative cost tier is very_low or low; this is not a live price guarantee."
+    },
+    {
+      "id": "comfort-food",
+      "definition": "Authored culinary style: warm, rich-tasting or familiar rather than a measured nutrition property."
+    },
+    {
+      "id": "dessert",
+      "definition": "Authored as a sweet dessert; may also be used as a snack."
+    },
+    {
+      "id": "family-friendly",
+      "definition": "Base flavours are mild to moderate; optional chilli is served separately. Not advice for infants, toddlers or individual allergies."
+    },
+    {
+      "id": "freezer-friendly",
+      "definition": "At least the specifically identified component can be frozen; inspect freezerScope and freezerNotes before freezing an assembled dish."
+    },
+    {
+      "id": "high-fiber",
+      "definition": "Estimated base fibre supplies at least 3 g per 100 kcal; provisional internal tag. No cooked-weight claim is made."
+    },
+    {
+      "id": "high-protein",
+      "definition": "Estimated base protein supplies at least 20% of estimated base energy; provisional internal tag, not a verified commercial claim."
+    },
+    {
+      "id": "meal-prep",
+      "definition": "A useful cooked or prepared component can be made ahead using the specified fridge/freezer and assembly instructions; not a seven-day fridge guarantee."
+    },
+    {
+      "id": "one-pan",
+      "definition": "Main cooked component uses one pan; a toaster, kettle or cold serving bowl may still be needed."
+    },
+    {
+      "id": "one-pot",
+      "definition": "Main cooked component uses one pot; cold toppings or bread may be handled separately."
+    },
+    {
+      "id": "quick",
+      "definition": "Total elapsed estimate, including mandatory rest or chilling, is at most 30 minutes."
+    },
+    {
+      "id": "snack",
+      "definition": "Authored as a snack, including savoury snacks."
+    },
+    {
+      "id": "traybake",
+      "definition": "Main components roast together on a tray; cold sauce or a separately cooked side may be needed."
+    },
+    {
+      "id": "vegan",
+      "definition": "No intentional animal-derived base ingredients. Brand labels and any changes still require checking."
+    },
+    {
+      "id": "vegetarian",
+      "definition": "No intentional meat or fish ingredients in the base; suitable cheese rennet and product labels remain mandatory."
+    }
+  ],
+  "costLevels": {
+    "very_low": "Mostly economical grains, eggs, legumes or dairy with modest extras; no current DKK threshold.",
+    "low": "Everyday ingredients intended to be economical; store, pack size, season and offers may change the ranking.",
+    "medium": "A larger meat, fish, cheese or nut component, still designed for normal supermarket shopping.",
+    "high": "A small minority with comparatively expensive protein or other ingredients. Not a live price estimate."
+  },
+  "prohibitedInferences": [
+    "Do not treat quick as active hands-on time only.",
+    "Do not treat budget as a quoted meal price.",
+    "Do not infer allergy safety from vegetarian or vegan.",
+    "Do not reuse tags after changing ingredients without re-evaluating them.",
+    "No low-calorie tag is used because a meal-size target does not establish a regulated low-energy claim."
+  ]
+}

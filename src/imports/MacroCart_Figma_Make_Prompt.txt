@@ -1,0 +1,129 @@
+Integrate the attached MacroCart recipe library into THIS EXISTING prototype. Implement the changes, not just a plan.
+
+This is a data integration task, not a redesign and not a request to rebuild the app. Preserve the current branding, layout, navigation, components, responsive behavior, interface language, and unrelated functionality. Inspect the existing code and reuse its architecture before editing.
+
+1. READ AND IMPORT THE COMPLETE SOURCE DATA
+
+Eight files are attached:
+- README.md
+- 01_ingredient_taxonomy.json
+- 02_recipe_database.schema.json
+- 04_tag_taxonomy.json
+- recipes_001_030.json
+- recipes_031_060.json
+- recipes_061_090.json
+- recipes_091_120.json
+
+Read the README, taxonomy, schema, and tag definitions first. The four numbered batches together ARE the complete database; 03_recipes_all_120.json is not needed. Other tools mentioned in the README are not prerequisites for this frontend integration.
+
+Parse the complete files programmatically. Each batch is an envelope containing metadata and a recipes array, NOT a top-level recipe array. Concatenate the four recipes arrays and order by sequence. Flatten taxonomy.groups into a lookup keyed by normalizedIngredient. Preserve version metadata.
+
+Expected source totals: 120 unique recipes, sequences 1-120, 167 canonical ingredients, 10 ingredient groups.
+Expected primaryCategory counts:
+breakfasts: 20; chicken_turkey: 25; beef: 15; pork: 8; fish_seafood: 10; vegetarian: 12; pasta: 10; bowls_wraps_burritos: 10; snacks_desserts: 10.
+
+Import every original field and nested object without summarizing, rewriting, fabricating, or shortening records. Do not replace the library with sample recipes, repeated cards, or generated substitutes. Detect missing files, truncated JSON, conflicting IDs, unresolved ingredient references, and version mismatches. Report blockers rather than inventing missing data. Identical re-imports must not create duplicates.
+
+Validate the source documents against the supplied JSON Schema and check cross-file references. Do not silently repair source data to make validation pass.
+
+2. USE A SHARED DATA LAYER
+
+Store the complete source files as persistent project assets and load them through one shared recipe repository/adapter. All recipe-related views must use this same dataset. Do not depend on chat attachment links, sandbox paths, or temporary URLs at runtime.
+
+Use the project's existing framework, types, services, and state conventions. Keep ingredient matching, nutrition calculation, serving scaling, and shopping aggregation outside presentation components.
+
+Keep canonical recipe objects immutable. Store UI state, selected variants, favorites, planner entries, and media mappings separately by stable recipe ID; the source schema rejects unknown properties.
+
+Replace old recipe demo fixtures where appropriate, but preserve unrelated user data and saved plans. Handle obsolete saved references explicitly. Do not introduce a new backend, authentication system, paid API, or external upload service. Reuse existing persistence; otherwise use versioned browser storage for lightweight user state with safe error handling.
+
+3. CONNECT THE EXISTING RECIPE EXPERIENCE
+
+Populate existing recipe discovery, detail, recommendation, and recipe-selection components with the imported data. Add only minimal missing components needed to browse and use the recipes; do not create a parallel app or redesign existing screens.
+
+All 120 recipes must be reachable, even when pagination limits visible cards. Derive category counts from data.
+
+Recipe cards should use actual name, description, totalTimeMinutes, calories and protein per serving, servings, and qualitative cost tier. Show only a few useful tags.
+
+Support search across recipe names, descriptions, ingredient names, and English/Danish ingredient aliases. Reuse existing filters, adding practical missing filters for meal type, category, cuisine, calorie/protein range, total elapsed time, cost tier, vegetarian, meal-prep, and freezer suitability. Meal types and tags can overlap; primary categories are exclusive. Do not treat the vegetarian primary category as the complete set of vegetarian-tagged recipes.
+
+Recipe detail should expose the full ingredient list, numbered instructions, nutrition, preparation/cooking/passive/total time, difficulty, substitution notes, add-ons, removals, scaling guidance, and storage/reheating information. Keep the interface readable with existing expandable sections.
+
+The source contains no recipe photography. Preserve suitable existing assets or use tasteful placeholders. Keep media separate from source records and do not invent image URLs or present unrelated photos as the actual dish.
+
+4. GET QUANTITIES AND NUTRITION RIGHT
+
+These conventions are mandatory:
+- ingredients quantities are for the WHOLE recipe at recipe.servings.
+- nutritionPerServing is ALREADY per serving; never divide it by servings again.
+- Substitution quantities, possibleAddOns, and possibleRemovals are whole-recipe quantities.
+- scalingNotes.*.changes contains PER-SERVING signed deltas against the original base.
+- Optional ingredients and add-ons are excluded from base nutrition until selected.
+
+For a requested preparation count S and original servings B:
+scaledBaseQuantity = originalQuantity * S / B.
+For one authored scaling change d:
+adjustedQuantity = scaledBaseQuantity + d * S.
+For a selected substitute with source alternative quantity A:
+replacementQuantity = A * S / B; remove the original ingredient rather than adding both.
+
+Distinguish servings PREPARED from servings EATEN. Changing prepared servings changes ingredient demand and whole-batch totals, not nutrition per serving. Planner nutrition equals the chosen variant's nutrition per serving multiplied by servings eaten.
+
+Recalculate changed recipes from final ingredient quantities and each ingredient's nutritionReference.basisQuantity/basisUnit. Preserve the dataset's available-carbohydrate convention and calorie references. Sum before rounding; use the documented half-up rounding: whole kcal and 0.1 g macros. Do not add already-rounded nutrition endpoints together.
+
+Never silently convert g to ml, raw to cooked weight, dry to cooked grain, drained weight to package weight, or prepared stock to concentrate. Never scale cooking time linearly with serving count. totalTimeMinutes includes mandatory resting/chilling, so overnight oats must not appear as a finished 10-minute meal.
+
+5. ALLOW AUTHORED ADJUSTMENTS, NOT INVENTED ONES
+
+Use the recipe's actual substitutions, possibleAddOns, possibleRemovals, and scalingNotes. Present goals such as Original, Lower calories, More energy, and More protein using the authored changes.
+
+For this iteration, support one authored modification at a time unless the existing app already has tested conflict handling. Do not silently stack incompatible changes. Reject negative quantities. Resetting to Original must restore the exact baseline.
+
+Show replacement quantities, method-change notes, and recalculated nutrition. When requiresMethodChange is true, make the cooking caveat visible; do not claim an exact revised cooking time without source support.
+
+Recheck dietary labels, allergen indications, names, and timing after modifications. Substitutions are culinary alternatives, not aliases for the same supermarket product. Do not label an alternative cheaper without actual comparable prices.
+
+6. WIRE PLANNING AND SHOPPING TO THE SAME DATA
+
+Where the prototype has a weekly planner, allow selection of real recipe IDs, date/meal slot, variant, and servings. Adding, replacing, or removing a meal must update daily totals and shopping demand. Persist favorites and planned meals across refreshes.
+
+Where plan generation already exists, restrict its output to valid imported recipe IDs and honor existing preferences and exclusions. Show actual calculated totals and deviations from calorie/protein targets. Do not invent meals or claim exact targets, live AI optimization, or a guaranteed budget. Clearly distinguish any rule-based demonstration from a connected AI service.
+
+Build shopping demand from selected final ingredients and preparation quantities, grouped by normalizedIngredient and compatible unit/state, not display name. Aggregate quantities across recipes. Exclude unselected optional additions. Omit plain water from the purchase list, but do not assume salt, oil, or spices are free or already owned.
+
+Count a cooking batch once when existing leftover planning links several meals to that batch. Do not buy a whole four-serving recipe for every single serving eaten.
+
+Show canonical ingredient display names and grocery groups. Support pantry/check-off behavior already in the prototype. Keep edible ingredient demand separate from package counts and checkout cost.
+
+7. DO NOT FABRICATE PRICES OR SAFETY CLAIMS
+
+estimatedCostLevel is a qualitative tier: very_low, low, medium, or high. It is not a DKK price. The library contains no live supermarket offers.
+
+Preserve genuine existing offer integrations, but do not invent retailer discounts, price dates, savings, package sizes, or weekly totals. When no verified price exists, show Price unavailable/Not connected rather than zero. Mark any retained mock offers clearly as Demo and keep them separate from verified data. A partially priced basket must identify missing prices.
+
+For a future offer adapter, retain canonical ingredient ID, retailer/SKU, currency, usable pack quantity, product state, price validity, and source timestamp. Aggregate demand before rounding to packs; never equate consumed-ingredient cost with checkout cost.
+
+Label nutrition as estimated. Preserve storageDaysFridge, reheatingMethod, component separation, freezerScope, and freezerNotes. A freezer-friendly component does not mean the whole assembled dish can be frozen. Do not schedule fridge storage beyond the recipe's stated limit.
+
+The dataset is not sufficient to guarantee allergy safety. Preserve allergenAssessment warnings and do not advertise automatic allergy-safe planning from these records alone.
+
+Do not publish the prototype, enable public sharing, or upload this commercial recipe library to unrelated external services.
+
+8. VERIFY BEFORE DECLARING COMPLETION
+
+Work in this order: complete import and validation; connect browse/detail; connect existing planning/shopping; run regression tests. Correct data and working connections take priority over visual embellishments.
+
+Verify:
+- Exactly 120 unique imported recipes and 167 canonical ingredients; all nine category counts match.
+- All source recipe fields are preserved; no unknown ingredient references or duplicate records.
+- Every recipe can open; search and filters operate on the complete dataset.
+- chicken_001 is Creamy Garlic Chicken Pasta: original servings 4, chicken 600 g, dry pasta 280 g; per serving 625 kcal and 56.1 g protein.
+- Preparing 2 servings changes chicken to 300 g and dry pasta to 140 g, while per-serving nutrition stays 625 kcal and 56.1 g protein.
+- Its lower-calorie option uses 55 g dry pasta per serving and produces approximately 572 kcal and 54.2 g protein per serving.
+- Two separate one-serving base preparations aggregate to 300 g chicken and 140 g dry pasta in the shopping list.
+- Variant changes, meal replacement/removal, and refresh persistence work without mutating the source.
+- Existing navigation and responsive behavior remain intact; no new runtime/type errors.
+- No unverified live prices or allergy-safety guarantees appear.
+
+Run the project's available build/tests and source validation; state honestly when a check could not be run. Do not claim completion after importing only one batch or showing a few cards.
+
+After implementing, report actual imported counts, connected screens, checks performed, remaining blockers, and whether persistence and prices are local/demo or backed by existing services. If execution limits interrupt the work, leave a precise checkpoint rather than claiming the remaining records/features are done.
